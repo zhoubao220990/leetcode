@@ -1,4 +1,4 @@
-package solution.linkedNode;
+package solution;
 
 /**
  * 2. 两数相加

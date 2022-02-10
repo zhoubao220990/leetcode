@@ -1,10 +1,16 @@
 package solution;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
+
+/**
+ * 3. 无重复字符的最长子串
+ * 给定一个字符串 s ，请你找出其中不含有重复字符的 最长子串 的长度。
+ * @author zhoubao
+ */
 public class S3_lengthOfLongestSubstring {
     public static void main(String[] args) {
         String s = "比好你好的";
@@ -78,14 +84,13 @@ public class S3_lengthOfLongestSubstring {
         int maxLength = 0;
         char[] chars = s.toCharArray();
         outer : for (int i=0; i< chars.length; i++) {
-            List<Character> indexSet = new ArrayList<>();
+            Set<Character> indexSet = new HashSet<>();
             int currentLength = 0;
             inner : for (int j=i; j<s.length(); j++) {
                 if (indexSet.contains(chars[j])) {
                     currentLength = indexSet.size();
                     if (currentLength > maxLength) {
                         maxLength = currentLength;
-                        i = j;
                     }
                     break inner;
                 }
@@ -94,10 +99,8 @@ public class S3_lengthOfLongestSubstring {
                 if (currentLength > maxLength) {
                     maxLength = currentLength;
                 }
-                i = indexSet.size();
             }
         }
-
         return maxLength;
     }
 }
